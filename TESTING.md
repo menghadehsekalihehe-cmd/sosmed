@@ -1,15 +1,15 @@
-# REST API Testing Guide
+# Panduan Testing REST API
 
-## API Testing with curl
+## Testing API dengan curl
 
 ### 1. Health Check
 ```bash
 curl http://localhost:5000/api/health
 ```
 
-### 2. User Management
+### 2. Manajemen User
 
-#### Create User
+#### Buat User
 ```bash
 curl -X POST http://localhost:5000/api/users \
   -H "Content-Type: application/json" \
@@ -31,12 +31,12 @@ curl -X POST http://localhost:5000/api/users/login \
   }'
 ```
 
-#### Get All Users
+#### Dapatkan Semua User
 ```bash
 curl http://localhost:5000/api/users?page=1&per_page=10
 ```
 
-#### Get User by ID
+#### Dapatkan User Berdasarkan ID
 ```bash
 curl http://localhost:5000/api/users/1
 ```
@@ -51,14 +51,14 @@ curl -X PUT http://localhost:5000/api/users/1 \
   }'
 ```
 
-#### Delete User
+#### Hapus User
 ```bash
 curl -X DELETE http://localhost:5000/api/users/1
 ```
 
-### 3. Posts Management
+### 3. Manajemen Posts
 
-#### Create Post
+#### Buat Post
 ```bash
 curl -X POST http://localhost:5000/api/posts \
   -H "Content-Type: application/json" \
@@ -71,12 +71,12 @@ curl -X POST http://localhost:5000/api/posts \
   }'
 ```
 
-#### Get All Posts
+#### Dapatkan Semua Posts
 ```bash
 curl http://localhost:5000/api/posts?page=1&per_page=10&status=published
 ```
 
-#### Get Post by ID
+#### Dapatkan Post Berdasarkan ID
 ```bash
 curl http://localhost:5000/api/posts/1
 ```
@@ -92,7 +92,7 @@ curl -X PUT http://localhost:5000/api/posts/1 \
   }'
 ```
 
-#### Delete Post
+#### Hapus Post
 ```bash
 curl -X DELETE http://localhost:5000/api/posts/1 \
   -H "Content-Type: application/json" \
@@ -101,9 +101,9 @@ curl -X DELETE http://localhost:5000/api/posts/1 \
   }'
 ```
 
-### 4. Comments Management
+### 4. Manajemen Komentar
 
-#### Create Comment
+#### Buat Komentar
 ```bash
 curl -X POST http://localhost:5000/api/comments \
   -H "Content-Type: application/json" \
@@ -114,17 +114,17 @@ curl -X POST http://localhost:5000/api/comments \
   }'
 ```
 
-#### Get Post Comments
+#### Dapatkan Komentar Post
 ```bash
 curl http://localhost:5000/api/comments/post/1?page=1&per_page=10
 ```
 
-#### Get Comment by ID
+#### Dapatkan Komentar Berdasarkan ID
 ```bash
 curl http://localhost:5000/api/comments/1
 ```
 
-#### Update Comment
+#### Update Komentar
 ```bash
 curl -X PUT http://localhost:5000/api/comments/1 \
   -H "Content-Type: application/json" \
@@ -134,7 +134,7 @@ curl -X PUT http://localhost:5000/api/comments/1 \
   }'
 ```
 
-#### Delete Comment
+#### Hapus Komentar
 ```bash
 curl -X DELETE http://localhost:5000/api/comments/1 \
   -H "Content-Type: application/json" \
@@ -143,9 +143,9 @@ curl -X DELETE http://localhost:5000/api/comments/1 \
   }'
 ```
 
-### 5. Categories Management
+### 5. Manajemen Kategori
 
-#### Create Category
+#### Buat Kategori
 ```bash
 curl -X POST http://localhost:5000/api/categories \
   -H "Content-Type: application/json" \
@@ -156,17 +156,17 @@ curl -X POST http://localhost:5000/api/categories \
   }'
 ```
 
-#### Get All Categories
+#### Dapatkan Semua Kategori
 ```bash
 curl http://localhost:5000/api/categories
 ```
 
-#### Get Category by ID
+#### Dapatkan Kategori Berdasarkan ID
 ```bash
 curl http://localhost:5000/api/categories/1
 ```
 
-#### Update Category
+#### Update Kategori
 ```bash
 curl -X PUT http://localhost:5000/api/categories/1 \
   -H "Content-Type: application/json" \
@@ -176,14 +176,14 @@ curl -X PUT http://localhost:5000/api/categories/1 \
   }'
 ```
 
-#### Delete Category
+#### Hapus Kategori
 ```bash
 curl -X DELETE http://localhost:5000/api/categories/1
 ```
 
-### 6. Tags Management
+### 6. Manajemen Tags
 
-#### Create Tag
+#### Buat Tag
 ```bash
 curl -X POST http://localhost:5000/api/tags \
   -H "Content-Type: application/json" \
@@ -193,24 +193,24 @@ curl -X POST http://localhost:5000/api/tags \
   }'
 ```
 
-#### Get All Tags
+#### Dapatkan Semua Tags
 ```bash
 curl http://localhost:5000/api/tags
 ```
 
-#### Get Tag by ID
+#### Dapatkan Tag Berdasarkan ID
 ```bash
 curl http://localhost:5000/api/tags/1
 ```
 
-#### Delete Tag
+#### Hapus Tag
 ```bash
 curl -X DELETE http://localhost:5000/api/tags/1
 ```
 
-### 7. Likes Management
+### 7. Manajemen Likes
 
-#### Like a Post
+#### Like Post
 ```bash
 curl -X POST http://localhost:5000/api/likes \
   -H "Content-Type: application/json" \
@@ -220,7 +220,7 @@ curl -X POST http://localhost:5000/api/likes \
   }'
 ```
 
-#### Unlike a Post
+#### Unlike Post
 ```bash
 curl -X DELETE http://localhost:5000/api/likes \
   -H "Content-Type: application/json" \
@@ -230,14 +230,14 @@ curl -X DELETE http://localhost:5000/api/likes \
   }'
 ```
 
-#### Get Post Likes
+#### Dapatkan Likes Post
 ```bash
 curl http://localhost:5000/api/likes/post/1?page=1&per_page=10
 ```
 
-## API Response Examples
+## Contoh Response API
 
-### Success Response (200/201)
+### Response Sukses (200/201)
 ```json
 {
   "id": 1,
@@ -250,50 +250,50 @@ curl http://localhost:5000/api/likes/post/1?page=1&per_page=10
 }
 ```
 
-### Error Response (400/404/500)
+### Response Error (400/404/500)
 ```json
 {
-  "error": "Missing required fields"
+  "error": "Kolom yang diperlukan tidak ada"
 }
 ```
 
-## Testing Checklist
+## Checklist Testing
 
-- [ ] Health check endpoint
-- [ ] Create user
-- [ ] User login
-- [ ] Get all users (with pagination)
-- [ ] Get user by ID
+- [ ] Endpoint health check
+- [ ] Buat user
+- [ ] Login user
+- [ ] Dapatkan semua user (dengan pagination)
+- [ ] Dapatkan user berdasarkan ID
 - [ ] Update user
-- [ ] Delete user
-- [ ] Create post
-- [ ] Get all posts
-- [ ] Get post by ID
+- [ ] Hapus user
+- [ ] Buat post
+- [ ] Dapatkan semua posts
+- [ ] Dapatkan post berdasarkan ID
 - [ ] Update post
-- [ ] Delete post
-- [ ] Create category
-- [ ] Get all categories
-- [ ] Create tag
-- [ ] Get all tags
-- [ ] Create comment
-- [ ] Get post comments
-- [ ] Update comment
-- [ ] Delete comment
+- [ ] Hapus post
+- [ ] Buat kategori
+- [ ] Dapatkan semua kategori
+- [ ] Buat tag
+- [ ] Dapatkan semua tags
+- [ ] Buat komentar
+- [ ] Dapatkan komentar post
+- [ ] Update komentar
+- [ ] Hapus komentar
 - [ ] Like post
 - [ ] Unlike post
-- [ ] Get post likes
+- [ ] Dapatkan likes post
 
-## Database Verification
+## Verifikasi Database
 
-### MySQL/MariaDB Commands
+### Perintah MySQL/MariaDB
 ```bash
-# Connect to database
+# Terhubung ke database
 mysql -u username -p database_name
 
-# Show tables
+# Tampilkan tabel
 SHOW TABLES;
 
-# Show table structure
+# Tampilkan struktur tabel
 DESCRIBE users;
 DESCRIBE posts;
 DESCRIBE comments;
@@ -302,7 +302,7 @@ DESCRIBE tags;
 DESCRIBE likes;
 DESCRIBE post_tags;
 
-# View data
+# Lihat data
 SELECT * FROM users;
 SELECT * FROM posts;
 SELECT * FROM comments;
