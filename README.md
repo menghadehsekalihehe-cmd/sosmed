@@ -1,126 +1,126 @@
-# Flask REST API - Project Documentation
+# Flask REST API - Dokumentasi Proyek
 
-## Overview
-This is a complete REST API application built with Flask, using SQLAlchemy ORM and MySQL/MariaDB database. The project follows the MVC (Model-View-Controller) architecture pattern.
+## Ikhtisar
+Ini adalah aplikasi REST API lengkap yang dibangun dengan Flask, menggunakan ORM SQLAlchemy dan database MySQL/MariaDB. Proyek ini mengikuti pola arsitektur MVC (Model-View-Controller).
 
-## Project Structure
+## Struktur Proyek
 ```
 ├── app/
 │   ├── __init__.py           # Flask app factory
 │   ├── models/
-│   │   └── __init__.py       # Database models (ORM)
+│   │   └── __init__.py       # Model basis data (ORM)
 │   ├── controllers/
-│   │   └── __init__.py       # Business logic controllers
+│   │   └── __init__.py       # Kontroler logika bisnis
 │   └── views/
-│       └── __init__.py       # API routes and blueprints
+│       └── __init__.py       # Rute API dan blueprints
 ├── config/
-│   └── config.py             # Configuration settings
+│   └── config.py             # Pengaturan konfigurasi
 ├── venv/                      # Virtual environment
-├── .env                       # Environment variables
-├── run.py                     # Application entry point
-├── init_db.py                # Database initialization script
-└── requirements.txt          # Python dependencies
+├── .env                       # Variabel lingkungan
+├── run.py                     # Titik masuk aplikasi
+├── init_db.py                # Skrip inisialisasi basis data
+└── requirements.txt          # Dependensi Python
 ```
 
-## Features
+## Fitur
 
-### Architecture
-- **MVC Pattern**: Separation of concerns with Models, Controllers, and Views
-- **ORM (SQLAlchemy)**: Database abstraction layer for MySQL/MariaDB
-- **RESTful API**: Standard REST conventions for all endpoints
-- **Blueprints**: Organized routing with Flask blueprints
+### Arsitektur
+- **Pola MVC**: Pemisahan perhatian dengan Models, Controllers, dan Views
+- **ORM (SQLAlchemy)**: Lapisan abstraksi basis data untuk MySQL/MariaDB
+- **API RESTful**: Konvensi REST standar untuk semua endpoint
+- **Blueprints**: Perutean terorganisir dengan blueprints Flask
 
-### Database Tables (6 tables)
-1. **Users** - User accounts and authentication
-2. **Posts** - Blog posts/articles
-3. **Comments** - Comments on posts
-4. **Categories** - Post categories
-5. **Tags** - Post tags
-6. **Likes** - Post likes (association table)
+### Tabel Basis Data (6 tabel)
+1. **Users** - Akun pengguna dan autentikasi
+2. **Posts** - Postingan blog/artikel
+3. **Comments** - Komentar pada postingan
+4. **Categories** - Kategori postingan
+5. **Tags** - Tag postingan
+6. **Likes** - Like postingan (tabel asosiasi)
 
-### API Endpoints
+### Endpoint API
 
-#### Users
-- `POST /api/users` - Create new user
-- `GET /api/users` - Get all users (paginated)
-- `GET /api/users/<id>` - Get user by ID
-- `PUT /api/users/<id>` - Update user
-- `DELETE /api/users/<id>` - Delete user
-- `POST /api/users/login` - User login
+#### Pengguna
+- `POST /api/users` - Buat pengguna baru
+- `GET /api/users` - Dapatkan semua pengguna (dipaginasi)
+- `GET /api/users/<id>` - Dapatkan pengguna berdasarkan ID
+- `PUT /api/users/<id>` - Perbarui pengguna
+- `DELETE /api/users/<id>` - Hapus pengguna
+- `POST /api/users/login` - Login pengguna
 
-#### Posts
-- `POST /api/posts` - Create new post
-- `GET /api/posts` - Get all posts (paginated, filtered by status)
-- `GET /api/posts/<id>` - Get post by ID
-- `PUT /api/posts/<id>` - Update post
-- `DELETE /api/posts/<id>` - Delete post
+#### Postingan
+- `POST /api/posts` - Buat postingan baru
+- `GET /api/posts` - Dapatkan semua postingan (dipaginasi, difilter berdasarkan status)
+- `GET /api/posts/<id>` - Dapatkan postingan berdasarkan ID
+- `PUT /api/posts/<id>` - Perbarui postingan
+- `DELETE /api/posts/<id>` - Hapus postingan
 
-#### Comments
-- `POST /api/comments` - Create new comment
-- `GET /api/comments/<id>` - Get comment by ID
-- `GET /api/comments/post/<post_id>` - Get post comments
-- `PUT /api/comments/<id>` - Update comment
-- `DELETE /api/comments/<id>` - Delete comment
+#### Komentar
+- `POST /api/comments` - Buat komentar baru
+- `GET /api/comments/<id>` - Dapatkan komentar berdasarkan ID
+- `GET /api/comments/post/<post_id>` - Dapatkan komentar postingan
+- `PUT /api/comments/<id>` - Perbarui komentar
+- `DELETE /api/comments/<id>` - Hapus komentar
 
-#### Categories
-- `POST /api/categories` - Create new category
-- `GET /api/categories` - Get all categories
-- `GET /api/categories/<id>` - Get category by ID
-- `PUT /api/categories/<id>` - Update category
-- `DELETE /api/categories/<id>` - Delete category
+#### Kategori
+- `POST /api/categories` - Buat kategori baru
+- `GET /api/categories` - Dapatkan semua kategori
+- `GET /api/categories/<id>` - Dapatkan kategori berdasarkan ID
+- `PUT /api/categories/<id>` - Perbarui kategori
+- `DELETE /api/categories/<id>` - Hapus kategori
 
-#### Tags
-- `POST /api/tags` - Create new tag
-- `GET /api/tags` - Get all tags
-- `GET /api/tags/<id>` - Get tag by ID
-- `DELETE /api/tags/<id>` - Delete tag
+#### Tag
+- `POST /api/tags` - Buat tag baru
+- `GET /api/tags` - Dapatkan semua tag
+- `GET /api/tags/<id>` - Dapatkan tag berdasarkan ID
+- `DELETE /api/tags/<id>` - Hapus tag
 
-#### Likes
-- `POST /api/likes` - Like a post
-- `DELETE /api/likes` - Unlike a post
-- `GET /api/likes/post/<post_id>` - Get post likes
+#### Like
+- `POST /api/likes` - Like sebuah postingan
+- `DELETE /api/likes` - Unlike sebuah postingan
+- `GET /api/likes/post/<post_id>` - Dapatkan like postingan
 
-#### Health Check
-- `GET /api/health` - API health status
+#### Pemeriksaan Kesehatan
+- `GET /api/health` - Status kesehatan API
 
-## Installation & Setup
+## Instalasi & Setup
 
-### 1. Create Virtual Environment
+### 1. Buat Virtual Environment
 ```bash
 python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate  # Di Windows: venv\Scripts\activate
 ```
 
-### 2. Install Dependencies
+### 2. Install Dependensi
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Configure Database
-Edit `.env` file with your MySQL/MariaDB credentials:
+### 3. Konfigurasi Basis Data
+Edit file `.env` dengan kredensial MySQL/MariaDB Anda:
 ```
 DATABASE_URL=mysql+pymysql://username:password@localhost:3306/database_name
 ```
 
-### 4. Initialize Database
+### 4. Inisialisasi Basis Data
 ```bash
 python init_db.py
 ```
 
-This script will:
-- Create all database tables
-- Add sample users, categories, tags, posts, comments, and likes
+Skrip ini akan:
+- Membuat semua tabel basis data
+- Menambahkan contoh pengguna, kategori, tag, postingan, komentar, dan like
 
-### 5. Run the Application
+### 5. Jalankan Aplikasi
 ```bash
 python run.py
 ```
 
-The API will be available at `http://localhost:5000`
+API akan tersedia di `http://localhost:5000`
 
-## Usage Examples
+## Contoh Penggunaan
 
-### Create a User
+### Buat Pengguna
 ```bash
 curl -X POST http://localhost:5000/api/users \
   -H "Content-Type: application/json" \
@@ -132,12 +132,12 @@ curl -X POST http://localhost:5000/api/users \
   }'
 ```
 
-### Get All Users
+### Dapatkan Semua Pengguna
 ```bash
 curl http://localhost:5000/api/users?page=1&per_page=10
 ```
 
-### Create a Post
+### Buat Postingan
 ```bash
 curl -X POST http://localhost:5000/api/posts \
   -H "Content-Type: application/json" \
@@ -150,7 +150,7 @@ curl -X POST http://localhost:5000/api/posts \
   }'
 ```
 
-### Like a Post
+### Like Postingan
 ```bash
 curl -X POST http://localhost:5000/api/likes \
   -H "Content-Type: application/json" \
@@ -160,7 +160,7 @@ curl -X POST http://localhost:5000/api/likes \
   }'
 ```
 
-### Create a Comment
+### Buat Komentar
 ```bash
 curl -X POST http://localhost:5000/api/comments \
   -H "Content-Type: application/json" \
@@ -171,9 +171,9 @@ curl -X POST http://localhost:5000/api/comments \
   }'
 ```
 
-## Database Models
+## Model Basis Data
 
-### User Model
+### Model Pengguna
 - `id` (Integer, Primary Key)
 - `username` (String, Unique)
 - `email` (String, Unique)
@@ -184,7 +184,7 @@ curl -X POST http://localhost:5000/api/comments \
 - `created_at` (DateTime)
 - `updated_at` (DateTime)
 
-### Post Model
+### Model Postingan
 - `id` (Integer, Primary Key)
 - `title` (String)
 - `content` (Text)
@@ -196,7 +196,7 @@ curl -X POST http://localhost:5000/api/comments \
 - `updated_at` (DateTime)
 - `published_at` (DateTime)
 
-### Comment Model
+### Model Komentar
 - `id` (Integer, Primary Key)
 - `content` (Text)
 - `user_id` (Foreign Key)
@@ -205,7 +205,7 @@ curl -X POST http://localhost:5000/api/comments \
 - `created_at` (DateTime)
 - `updated_at` (DateTime)
 
-### Category Model
+### Model Kategori
 - `id` (Integer, Primary Key)
 - `name` (String, Unique)
 - `description` (Text)
@@ -213,28 +213,28 @@ curl -X POST http://localhost:5000/api/comments \
 - `created_at` (DateTime)
 - `updated_at` (DateTime)
 
-### Tag Model
+### Model Tag
 - `id` (Integer, Primary Key)
 - `name` (String, Unique)
 - `slug` (String, Unique)
 - `created_at` (DateTime)
 - `updated_at` (DateTime)
 
-### Like Model
+### Model Like
 - `id` (Integer, Primary Key)
 - `user_id` (Foreign Key)
 - `post_id` (Foreign Key)
 - `created_at` (DateTime)
 - Unique constraint on (user_id, post_id)
 
-## Environment Variables
-Configure these in `.env`:
-- `FLASK_ENV` - Environment (development/production)
-- `FLASK_DEBUG` - Debug mode (True/False)
-- `DATABASE_URL` - MySQL connection string
-- `SECRET_KEY` - Secret key for sessions
+## Variabel Lingkungan
+Konfigurasi ini di file `.env`:
+- `FLASK_ENV` - Lingkungan (development/production)
+- `FLASK_DEBUG` - Mode debug (True/False)
+- `DATABASE_URL` - String koneksi MySQL
+- `SECRET_KEY` - Kunci rahasia untuk sesi
 
-## Requirements
+## Kebutuhan
 - Python 3.8+
 - Flask 2.3.3
 - Flask-SQLAlchemy 3.0.5
@@ -243,38 +243,38 @@ Configure these in `.env`:
 - cryptography 41.0.3
 - PyJWT 2.8.1
 
-## Key Features
+## Fitur Utama
 
-### 1. **MVC Architecture**
-   - **Models**: Database models with relationships
-   - **Controllers**: Business logic and data processing
-   - **Views**: API endpoints and routing
+### 1. **Arsitektur MVC**
+   - **Models**: Model basis data dengan relasi
+   - **Controllers**: Logika bisnis dan pemrosesan data
+   - **Views**: Endpoint API dan perutean
 
 ### 2. **ORM (SQLAlchemy)**
-   - Automatic SQL generation
-   - Type safety and validation
-   - Relationship management
-   - Query optimization
+   - Pembuatan SQL otomatis
+   - Keamanan tipe dan validasi
+   - Manajemen relasi
+   - Optimasi kueri
 
-### 3. **Database**
-   - MySQL/MariaDB support
-   - 6 interconnected tables
-   - Foreign keys and constraints
-   - Indexed fields for performance
+### 3. **Basis Data**
+   - Dukungan MySQL/MariaDB
+   - 6 tabel yang saling terhubung
+   - Foreign key dan constraint
+   - Kolom terindeks untuk performa
 
-### 4. **Security**
-   - Password hashing with werkzeug
-   - User authentication
-   - Data validation
+### 4. **Keamanan**
+   - Password hashing dengan werkzeug
+   - Autentikasi pengguna
+   - Validasi data
 
-### 5. **API Features**
-   - Pagination support
-   - JSON responses
-   - Error handling
-   - Health check endpoint
+### 5. **Fitur API**
+   - Dukungan paginasi
+   - Respon JSON
+   - Penanganan kesalahan
+   - Endpoint pemeriksaan kesehatan
 
-## Error Handling
-The API returns appropriate HTTP status codes:
+## Penanganan Kesalahan
+API mengembalikan kode status HTTP yang sesuai:
 - `200` - OK
 - `201` - Created
 - `400` - Bad Request
@@ -283,9 +283,9 @@ The API returns appropriate HTTP status codes:
 - `404` - Not Found
 - `500` - Internal Server Error
 
-## Development Commands
+## Perintah Development
 
-### Create Database
+### Buat Database
 ```bash
 python init_db.py
 ```
@@ -295,24 +295,3 @@ python init_db.py
 export FLASK_APP=run.py
 flask shell
 ```
-
-### Run Tests (if added)
-```bash
-pytest
-```
-
-## Future Enhancements
-- User authentication with JWT tokens
-- Request validation with marshmallow
-- API documentation with Swagger/OpenAPI
-- Unit tests with pytest
-- Rate limiting
-- Caching
-- Full-text search
-- Admin panel
-
-## License
-This project is open source and available under the MIT License.
-
-## Author
-Created as a REST API project demonstration with Flask, SQLAlchemy ORM, and MySQL.
